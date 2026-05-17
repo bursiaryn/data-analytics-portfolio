@@ -1,0 +1,78 @@
+name: notebook-smoke-test
+
+# Smoke test: validate notebook structure & helper modules tanpa run cell.
+# Raw data (data/raw/) gitignored, jadi full-execution tidak feasible di CI.
+# Yang dicek:
+#   1. Setiap .ipynb di **/notebooks/ valid (nbformat schema v4)
+#   2. Setiap viz_helpers.py kompilasi tanpa SyntaxError
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+
+      - name: Install validator deps
+        run: pip install nbformat==5.10.4
+
+      - name: Validate notebook JSON structure
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import nbformat
+          from nbformat.validator import ValidationError
+
+          notebooks = sorted(Path('.').rglob('notebooks/*.ipynb'))
+          if not notebooks:
+              raise SystemExit("No notebooks found under **/notebooks/")
+
+          failed = []
+          for nb_path in notebooks:
+              try:
+                  nb = nbformat.read(nb_path, as_version=4)
+                  nbformat.validate(nb)
+                  print(f"OK   {nb_path}")
+              except (ValidationError, Exception) as e:
+                  print(f"FAIL {nb_path}: {e}")
+                  failed.append(nb_path)
+
+          if failed:
+              raise SystemExit(f"{len(failed)} notebook(s) failed validation")
+          print(f"\nAll {len(notebooks)} notebook(s) valid.")
+          PY
+
+      - name: Compile viz_helpers modules
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import py_compile, sys
+
+          helpers = sorted(Path('.').rglob('notebooks/viz_helpers.py'))
+          if not helpers:
+              raise SystemExit("No viz_helpers.py found")
+
+          failed = []
+          for f in helpers:
+              try:
+                  py_compile.compile(str(f), doraise=True)
+                  print(f"OK   {f}")
+              except py_compile.PyCompileError as e:
+                  print(f"FAIL {f}: {e}")
+                  failed.append(f)
+
+          if failed:
+              sys.exit(f"{len(failed)} helper(s) failed to compile")
+          print(f"\nAll {len(helpers)} helper module(s) compiled.")
+          PY
