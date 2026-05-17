@@ -1,0 +1,22 @@
+name: porto-data-analyst
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - pandas
+  - numpy
+  - matplotlib
+  - seaborn
+  - scikit-learn
+  - scipy
+  - statsmodels
+  - jupyter
+  - nbconvert
+  - pyarrow
+  - plotly
+  - pip
+  - pip:
+      - anthropic       # Claude API — P3 roadmap (narrative generation)
+      - streamlit       # Interactive deployment — P3 roadmap
+      - shap            # Model explainability — P3 roadmap

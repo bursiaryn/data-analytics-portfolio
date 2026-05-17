@@ -1,0 +1,42 @@
+# Raw data — terlalu besar untuk git, download manual dari Kaggle
+data/raw/
+**/data/raw/
+
+# Processed outputs — regenerable dari notebook
+**/*.parquet
+**/output/*.json
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+**/.ipynb_checkpoints/
+
+# Python cache
+__pycache__/
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Conda / pip
+.env
+*.egg-info/
+dist/
+build/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary helper scripts (dipakai sementara, tidak perlu di-commit)
+add_*.py
+fix_*.py
+
+# Local Claude Code settings (per-user, jangan share)
+.claude/
