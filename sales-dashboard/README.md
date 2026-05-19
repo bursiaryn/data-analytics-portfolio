@@ -7,9 +7,14 @@ Proyek ini mendemonstrasikan kemampuan data wrangling multi-tabel, analisis bisn
 
 ## Dashboard Preview
 
-> Jalankan notebook 03 untuk menghasilkan gambar di bawah ini.
+Tersedia dalam **dua versi**:
 
-`output/dashboard.png` — layout satu halaman dengan KPI cards + 4 chart utama.
+| Versi | File | Untuk siapa |
+|---|---|---|
+| 🖼️ **Static PNG** | `output/dashboard.png` | Print, lampiran proposal, slide |
+| 🚀 **Interactive Web App** | `app/streamlit_app.py` | Demo live ke recruiter/klien (filter per state, kategori, periode) |
+
+> Live demo URL akan diisi setelah deploy ke Streamlit Cloud (lihat bagian "Interactive Version" di bawah).
 
 ---
 
@@ -34,8 +39,12 @@ sales-dashboard/
 │   ├── 01_data_loading_cleaning.ipynb   ← Load, merge, feature engineering
 │   ├── 02_exploratory_analysis.ipynb    ← 5 area analisis + export chart
 │   └── 03_dashboard_final.ipynb        ← Dashboard layout + export PNG
+├── app/                                 ← Streamlit interactive version
+│   ├── streamlit_app.py                 ← Main app (3 tab: Dashboard, Indonesia, About)
+│   ├── data_loader.py                   ← Cached loader + filter helper
+│   └── requirements.txt                 ← Minimal deps untuk Streamlit Cloud
 ├── output/
-│   ├── df_master.parquet               ← Master dataframe (dihasilkan nb01)
+│   ├── df_master.parquet               ← Master dataframe (dihasilkan nb01, di-commit untuk Streamlit)
 │   ├── dashboard.png                   ← Dashboard final (dihasilkan nb03)
 │   └── figures/                        ← Chart individual dari nb02
 ├── requirements.txt
@@ -80,11 +89,40 @@ Buka dan jalankan:
 
 ---
 
+## Interactive Version (Streamlit)
+
+### Run lokal
+
+```powershell
+conda activate porto-data-analyst
+pip install streamlit plotly       # sekali saja, kalau belum ada
+cd sales-dashboard
+streamlit run app/streamlit_app.py
+```
+
+Browser akan terbuka otomatis di `http://localhost:8501`.
+
+### Deploy ke Streamlit Community Cloud (gratis)
+
+Prasyarat: repo sudah di-push ke GitHub (sudah ✅).
+
+1. Buka https://share.streamlit.io → **Sign in with GitHub**
+2. Klik **"New app"** → pilih repo `bursiaryn/data-analytics-portfolio`
+3. Branch: `main`
+4. Main file path: `sales-dashboard/app/streamlit_app.py`
+5. Klik **Deploy** — tunggu ~2 menit untuk first build
+6. Setelah live, copy URL → update README.md baris "Live demo URL"
+
+**Cost:** Gratis. Streamlit Cloud free tier cukup untuk portfolio (app sleep setelah 7 hari idle, wake-up <30 detik).
+
+---
+
 ## Tech Stack
 
 - Python 3.11
 - pandas, numpy — data wrangling
-- matplotlib, seaborn — visualisasi
+- matplotlib, seaborn — visualisasi statis
+- **Streamlit + Plotly** — interactive web dashboard
 - Jupyter Notebook — environment analisis
 
 ---

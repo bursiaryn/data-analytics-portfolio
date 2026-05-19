@@ -6,6 +6,9 @@ data/raw/
 **/*.parquet
 **/output/*.json
 
+# Exception: parquet ini dibutuhkan Streamlit Cloud deploy (12 MB, di bawah 50 MB GitHub recommend)
+!sales-dashboard/output/df_master.parquet
+
 # Jupyter checkpoints
 .ipynb_checkpoints/
 **/.ipynb_checkpoints/
