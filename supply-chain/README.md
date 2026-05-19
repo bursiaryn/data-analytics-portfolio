@@ -35,9 +35,14 @@ Analisis komprehensif supply chain mencakup ABC Inventory Classification, Lead T
 - **Rekomendasi:** Integrasikan ROP ke sistem ERP/WMS untuk trigger otomatis purchase order
 
 ### 4. Late Delivery Prediction
-- Random Forest AUC >0.90 → model mampu memprediksi keterlambatan sebelum pengiriman
-- Feature terpenting: scheduled_lead_time, shipping_mode, benefit_per_order
+- Random Forest AUC ~0.68 → model menangkap signal namun perlu fitur tambahan untuk produksi
+- Feature terpenting (RF): scheduled_lead_time, shipping_mode, benefit_per_order
 - **Rekomendasi:** Deploy model sebagai pre-shipment risk scoring — flag order berisiko untuk penanganan prioritas
+
+### 5. Explainability (SHAP) — notebook 07
+- **Global:** Beeswarm + bar plot menunjukkan *arah pengaruh* per fitur (bukan hanya ranking)
+- **Local:** Waterfall plot per-order (high-risk, low-risk, ambiguous) = audit trail untuk tim ops
+- **Aksi praktis:** Output jadi daily exception report — order prob(late) > 0.7 diflag dengan top-3 alasan SHAP
 
 ---
 
@@ -54,7 +59,8 @@ supply-chain/
 │   ├── 03_lead_time_bottleneck.ipynb       ← bottleneck analysis
 │   ├── 04_reorder_point.ipynb              ← ROP + safety stock
 │   ├── 05_late_delivery_prediction.ipynb   ← ML model (LR + RF)
-│   └── 06_dashboard_final.ipynb            ← dashboard 1-halaman
+│   ├── 06_dashboard_final.ipynb            ← dashboard 1-halaman
+│   └── 07_shap_explainability.ipynb        ← explainability layer (P3)
 ├── output/
 │   ├── df_clean.parquet
 │   ├── df_abc.parquet
@@ -70,7 +76,11 @@ supply-chain/
 │       ├── F_late_region_category.png
 │       ├── G_reorder_point.png
 │       ├── H_model_evaluation.png
-│       └── I_feature_importance.png
+│       ├── I_feature_importance.png
+│       ├── J_shap_beeswarm.png             ← SHAP global (nb07)
+│       ├── K_shap_bar.png                  ← SHAP ranking (nb07)
+│       ├── L_shap_dependence.png           ← SHAP non-linear (nb07)
+│       └── M_shap_waterfall_examples.png   ← SHAP per-order (nb07)
 ├── requirements.txt
 └── README.md
 ```
@@ -122,6 +132,7 @@ Setiap notebook menyimpan output yang dibutuhkan notebook berikutnya.
 | Matplotlib | Semua visualisasi & dashboard |
 | Seaborn | Heatmap & statistical plots |
 | Scikit-learn | Logistic Regression, Random Forest, metrics |
+| **SHAP** | Model explainability (TreeExplainer + waterfall per-order) |
 | PyArrow | Parquet read/write |
 | Jupyter | Interactive notebook environment |
 

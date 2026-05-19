@@ -3,26 +3,30 @@
 Data analyst spesialisasi **FMCG, retail, dan e-commerce Indonesia**.
 Mengubah data menjadi keputusan bisnis yang terukur.
 
+🚀 **Live demo:** [Sales Dashboard interaktif →](https://data-analytics-portfolio-9ymrn6m6ijtyaamhnxndcr.streamlit.app/)
+(filter per state · kategori · periode · download top products)
+
 ---
 
 ## 5 Portfolio Projects
 
 | # | Proyek | Domain | Teknik Utama | Status |
 |---|---|---|---|---|
-| 1 | [Sales Dashboard](sales-dashboard/) | E-commerce Revenue | EDA, KPI Dashboard, Pareto Analysis | Complete |
-| 2 | [Customer Churn](churn-analysis/) | Telco Retention | ML Classification, LR + RF, AUC 0.83 | Complete |
+| 1 | [Sales Dashboard](sales-dashboard/) · [🚀 Live](https://data-analytics-portfolio-9ymrn6m6ijtyaamhnxndcr.streamlit.app/) | E-commerce Revenue | EDA, KPI Dashboard, Pareto Analysis, Streamlit | Complete |
+| 2 | [Customer Churn](churn-analysis/) | Telco Retention | ML Classification, LR + RF, AUC 0.83, **SHAP** | Complete |
 | 3 | [Cohort + RFM](cohort-rfm/) | Customer Lifecycle | Cohort Retention, RFM Scoring, CLV | Complete |
 | 4 | [A/B Testing](ab-testing/) | Experimentation | Z-test, Bootstrap CI, Power Analysis | Complete |
-| 5 | [Supply Chain](supply-chain/) | Operations Analytics | ABC, ROP + Safety Stock, Late Delivery ML | Complete |
+| 5 | [Supply Chain](supply-chain/) | Operations Analytics | ABC, ROP + Safety Stock, Late Delivery ML, **SHAP** | Complete |
 
 ---
 
 ## Skills Demonstrated
 
 **Analytics:** EDA · Cohort Analysis · RFM Segmentation · A/B Testing · ABC Inventory  
-**Machine Learning:** Logistic Regression · Random Forest · Feature Importance · AUC/ROC  
+**Machine Learning:** Logistic Regression · Random Forest · Feature Importance · AUC/ROC · **SHAP Explainability**  
 **Statistics:** Z-test · Chi-square · Bootstrap CI · Power Analysis · Effect Size  
-**Visualization:** Matplotlib · Seaborn · 1-page dashboard layout · KPI cards  
+**Visualization:** Matplotlib · Seaborn · Plotly · Streamlit · 1-page dashboard layout · KPI cards  
+**Deployment:** Streamlit Community Cloud (live demo URL ✅)  
 **Tools:** Python · Pandas · Scikit-learn · Scipy · Statsmodels · Jupyter  
 
 ---
@@ -74,7 +78,7 @@ stock Z=1.645 (95% service level) + prediksi keterlambatan RF dengan AUC >0.90.
 
 ## Roadmap
 
-- **P3:** Streamlit interactive dashboard (sales-dashboard) + Claude API narrative generation
+- **P3:** ✅ Streamlit interactive dashboard · ✅ SHAP explainability (churn + supply-chain) · ⏳ Claude API narrative
 - **P4:** Dataset Indonesia (BPS/open data) + GitHub Actions notebook validation
 
 ---

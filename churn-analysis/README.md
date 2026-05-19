@@ -54,7 +54,8 @@ churn-analysis/
 │   ├── 01_data_loading_cleaning.ipynb
 │   ├── 02_eda_segmentation.ipynb
 │   ├── 03_model_prediction.ipynb
-│   └── 04_dashboard_final.ipynb
+│   ├── 04_dashboard_final.ipynb
+│   └── 05_shap_explainability.ipynb       ← explainability layer (P3)
 ├── output/
 │   ├── df_clean.parquet
 │   ├── model_results.json
@@ -93,6 +94,7 @@ jupyter notebook
 | 02 | `output/figures/A_*.png ... E_*.png` |
 | 03 | `output/model_results.json` |
 | 04 | `output/dashboard.png` |
+| 05 | `output/figures/H_shap_*.png … K_shap_*.png` — explainability (global + local) |
 
 ---
 
@@ -100,6 +102,7 @@ jupyter notebook
 
 - Python 3.11 — pandas, numpy
 - Scikit-learn — Logistic Regression, Random Forest
+- **SHAP** — model explainability (TreeExplainer, beeswarm, dependence, waterfall)
 - Matplotlib, Seaborn — visualisasi
 - Jupyter Notebook
 
