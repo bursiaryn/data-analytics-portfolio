@@ -18,6 +18,7 @@ dependencies:
   - pip
   - pip:
       - openai                # OpenRouter API — P3 narrative generation (free tier, OpenAI-compatible)
+      - mlflow                # Model experiment tracking & monitoring dashboard
       - python-dotenv        # Load API keys dari .env (jangan hardcode)
       - streamlit            # Interactive deployment — sales-dashboard
       - shap                 # Model explainability — churn + supply-chain
