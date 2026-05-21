@@ -17,6 +17,7 @@ dependencies:
   - plotly
   - pip
   - pip:
-      - anthropic       # Claude API — P3 roadmap (narrative generation)
-      - streamlit       # Interactive deployment — P3 roadmap
-      - shap            # Model explainability — P3 roadmap
+      - openai                # OpenRouter API — P3 narrative generation (free tier, OpenAI-compatible)
+      - python-dotenv        # Load API keys dari .env (jangan hardcode)
+      - streamlit            # Interactive deployment — sales-dashboard
+      - shap                 # Model explainability — churn + supply-chain
