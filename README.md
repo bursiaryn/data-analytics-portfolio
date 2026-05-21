@@ -78,8 +78,8 @@ stock Z=1.645 (95% service level) + prediksi keterlambatan RF dengan AUC >0.90.
 
 ## Roadmap
 
-- **P3:** ✅ Streamlit interactive dashboard · ✅ SHAP explainability (churn + supply-chain) · ⏳ Claude API narrative
-- **P4:** Dataset Indonesia (BPS/open data) + GitHub Actions notebook validation
+- **P3:** ✅ Streamlit interactive dashboard · ✅ SHAP explainability (churn + supply-chain) · ✅ AI narrative (OpenRouter)
+- **P4:** ✅ GitHub Pages portfolio website · ✅ MLflow experiment tracking · ⏳ Dataset Indonesia (BPS/open data)
 
 ---
 
