@@ -43,3 +43,6 @@ fix_*.py
 
 # Local Claude Code settings (per-user, jangan share)
 .claude/
+
+# MLflow tracking store — regenerable dengan run notebook 06_mlflow_monitoring
+**/mlruns/
