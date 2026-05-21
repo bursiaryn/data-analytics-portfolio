@@ -14,7 +14,7 @@ Tersedia dalam **dua versi**:
 | 🖼️ **Static PNG** | `output/dashboard.png` | Print, lampiran proposal, slide |
 | 🚀 **Interactive Web App** | `app/streamlit_app.py` | Demo live ke recruiter/klien (filter per state, kategori, periode) |
 
-> Live demo URL akan diisi setelah deploy ke Streamlit Cloud (lihat bagian "Interactive Version" di bawah).
+> 🚀 **Live demo:** https://data-analytics-portfolio-9ymrn6m6ijtyaamhnxndcr.streamlit.app/
 
 ---
 
